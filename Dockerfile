@@ -10,9 +10,8 @@ RUN curl http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b
   rpm -ivh java.rpm && \
   rm java.rpm
   
-# Install log stash forwarder 0.4.0
-RUN mkdir /opt/forwarder && \
-  curl https://download.elastic.co/logstash-forwarder/binaries/logstash-forwarder_linux_amd64 -o /opt/forwarder/logstash-forwarder && \
-  chmod +x /opt/forwarder/logstash-forwarder
-  
-  
+# Download filebeat 5.5.2
+RUN curl https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.5.2-linux-x86_64.tar.gz -o /tmp/filebeat.tar.gz
+
+# Unzip and install filebeat
+RUN tar zxf /tmp/filebeat.tar.gz -C /opt && mv /opt/filebeat-5.5.2-linux-x86_64 /opt/filebeat && rm -rf /tmp/filebeat.tar.gz
