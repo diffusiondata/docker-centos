@@ -1,4 +1,4 @@
-FROM centos:centos7.3.1611
+FROM centos:7.6.1810
 # Install useful packages
 RUN yum -y update && \
   yum -y install sudo openssh-server openssh-clients openssl-devel which tar m4
