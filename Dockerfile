@@ -14,3 +14,8 @@ RUN curl https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.5.2-li
 # Unzip and install filebeat
 RUN tar zxf /tmp/filebeat.tar.gz -C /opt && mv /opt/filebeat-5.5.2-linux-x86_64 /opt/filebeat && rm -rf /tmp/filebeat.tar.gz
 
+# Install logstash forwarder
+RUN mkdir /opt/forwarder && \
+  curl https://download.elastic.co/logstash-forwarder/binaries/logstash-forwarder_linux_amd64 -o /opt/forwarder/logstash-forwarder && \
+  chmod +x /opt/forwarder/logstash-forwarder
+
